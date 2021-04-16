@@ -1,5 +1,6 @@
 # Fantasio Space
-Browser Multiplayer Online Battle Arena. Made with TypeScript, Phaser, Vue.js, Colyseus and MongoDB.
+Browser Multiplayer Online Battle Arena. Made with TypeScript, Phaser, Vue.js, Colyseus and MongoDB.  
+Submit your pull requests with bug fixes, code improvement and new features!
 
 ## Play
 [https://fantasio.space/](https://fantasio.space/)
