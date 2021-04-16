@@ -16,5 +16,5 @@ Submit your pull requests with bug fixes, code improvement and new features!
 _Browser will warn you about SSL security issue. Allow to open site, then open https://localhost:1443 and do the same._ 
 
 ## Screenshots
-![Screenshot](doc/images/screenshot-1.png)
-![Screenshot](doc/images/screenshot-2.png)
+![Screenshot](doc/images/screenshot-1.jpg)
+![Screenshot](doc/images/screenshot-2.jpg)
