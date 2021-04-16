@@ -14,3 +14,7 @@ Submit your pull requests with bug fixes, code improvement and new features!
 4. Run ```npm run dev_server``` and ```npm run dev_client```
 5. Open https://localhost:1000  
 _Browser will warn you about SSL security issue. Allow to open site, then open https://localhost:1443 and do the same._ 
+
+## Screenshots
+![Screenshot](doc/images/screenshot-1.png)
+![Screenshot](doc/images/screenshot-2.png)
