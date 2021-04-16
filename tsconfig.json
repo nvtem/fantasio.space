@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "moduleResolution": "node",
+    "lib": ["esnext", "dom", "scripthost"],
+    "target": "esnext",
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "experimentalDecorators": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/client/**/*.vue",
+    "src/client/**/*.png"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

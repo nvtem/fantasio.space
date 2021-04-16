@@ -1,0 +1,196 @@
+{
+  "team": [
+    {
+      "waypoints": [
+        [8, 88],
+        [8, 76],
+        [6, 62],
+        [6, 49],
+        [7, 23],
+        [15, 12],
+        [29, 5],
+        [52, 5],
+        [74, 7],
+        [86, 7]
+      ]
+    },
+    {
+      "waypoints": [
+        [10, 87],
+        [12, 76],
+        [9, 62],
+        [10, 49],
+        [11, 25],
+        [18, 14],
+        [30, 9],
+        [52, 9],
+        [57, 7],
+        [74, 11],
+        [85, 9]
+      ]
+    },
+    {
+      "waypoints": [
+        [13, 87],
+        [22, 80],
+        [86, 11]
+      ]
+    },
+    {
+      "waypoints": [
+        [15, 88],
+        [24, 83],
+        [88, 12]
+      ]
+    },
+    {
+      "waypoints": [
+        [15, 90],
+        [28, 90],
+        [51, 92],
+        [64, 92],
+        [73, 90],
+        [85, 84],
+        [90, 76],
+        [90, 52],
+        [91, 34],
+        [88, 23],
+        [90, 12]
+      ]
+    },
+    {
+      "waypoints": [
+        [14, 92],
+        [30, 94],
+        [51, 96],
+        [65, 94],
+        [75, 94],
+        [88, 86],
+        [94, 78],
+        [94, 52],
+        [94, 34],
+        [92, 23],
+        [92, 11]
+      ]
+    }
+  ],
+  "neutral": {
+    "types": {
+      "bat": {
+        "hp": 700,
+        "attackDamage": 120,
+        "attackCooldown": 700,
+        "defense": 10,
+        "spawnTimeout": 10000,
+        "attackSprite": "projectile-fire",
+        "attackRange": 150,
+        "runeType": "",
+        "exp": 50
+      },
+      "beaver": {
+        "hp": 850,
+        "attackDamage": 120,
+        "attackCooldown": 800,
+        "defense": 10,
+        "spawnTimeout": 10000,
+        "attackSprite": "projectile-fire",
+        "attackRange": 0,
+        "runeType": "",
+        "exp": 60
+      },
+      "eye": {
+        "hp": 800,
+        "attackDamage": 120,
+        "attackCooldown": 600,
+        "defense": 10,
+        "spawnTimeout": 10000,
+        "attackSprite": "projectile-fire",
+        "attackRange": 0,
+        "runeType": "",
+        "exp": 50
+      },
+      "dragon": {
+        "hp": 6000,
+        "attackDamage": 200,
+        "attackCooldown": 800,
+        "defense": 10,
+        "spawnTimeout": 30000,
+        "attackSprite": "projectile-red-tower",
+        "attackRange": 0,
+        "runeType": "",
+        "exp": 200
+      }
+    },
+    "positions": [
+      {
+        "type": "dragon",
+        "x": 1254,
+        "y": 722
+      },
+      {
+        "type": "dragon",
+        "x": 2039,
+        "y": 2605,
+        "direction": "up-stay"
+      },
+
+
+      {
+        "type": "eye",
+        "x": 677,
+        "y": 1817,
+        "direction": "up-stay"
+      },
+      {
+        "type": "bat",
+        "x": 764,
+        "y": 1846,
+        "direction": "up-stay"
+      },
+
+      {
+        "type": "eye",
+        "x": 1893,
+        "y": 541
+      },
+      {
+        "type": "bat",
+        "x": 1931,
+        "y": 593
+      },
+
+      {
+        "type": "eye",
+        "x": 2156,
+        "y": 1962
+      },
+      {
+        "type": "bat",
+        "x": 2079,
+        "y": 1960
+      },
+
+      {
+        "type": "beaver",
+        "x": 754,
+        "y": 1395
+      },
+      {
+        "type": "beaver",
+        "x": 822,
+        "y": 1366
+      },
+
+      {
+        "type": "beaver",
+        "x": 2545,
+        "y": 1590
+      },
+      {
+        "type": "beaver",
+        "x": 2588,
+        "y": 1632
+      }
+    ]
+  }
+}

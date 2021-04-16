@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "moduleResolution": "node",
+    "lib": ["esnext", "dom", "scripthost"],
+    "target": "esnext",
+    "module": "commonjs",
+    "resolveJsonModule": true,
+    "experimentalDecorators": true
+  },
+  "include": [
+    "src/server/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

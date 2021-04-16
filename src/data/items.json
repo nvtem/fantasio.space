@@ -1,0 +1,187 @@
+{
+  "axe-1": {
+    "name": "axe-1",
+    "fullName": "Axe I",
+    "description": "Attack damage +30",
+    "cost": 80,
+    "effect": {
+      "attackDamage": 30
+    }
+  },
+
+  "axe-2": {
+    "name": "axe-2",
+    "fullName": "Axe II",
+    "description": "Attack damage +60",
+    "cost": 200,
+    "effect": {
+      "attackDamage": 60
+    }
+  },
+
+  "dagger-1": {
+    "name": "dagger-1",
+    "fullName": "Dagger I",
+    "description": "Attack cooldown -0.05",
+    "cost": 80,
+    "effect": {
+      "attackCooldown": -50
+    }
+  },
+
+  "dagger-2": {
+    "name": "dagger-2",
+    "fullName": "Dagger II",
+    "description": "Attack cooldown -0.1",
+    "cost": 200,
+    "effect": {
+      "attackCooldown": -100
+    }
+  },
+
+  "armor-1": {
+    "name": "armor-1",
+    "fullName": "Armor I",
+    "description": "Defense +20",
+    "cost": 80,
+    "effect": {
+      "defense": 20
+    }
+  },
+
+  "armor-2": {
+    "name": "armor-2",
+    "fullName": "Armor II",
+    "description": "Defense +40",
+    "cost": 200,
+    "effect": {
+      "defense": 40
+    }
+  },
+
+  "boots-1": {
+    "name": "boots-1",
+    "fullName": "Boots of Speed I",
+    "description": "Movement speed +10",
+    "cost": 80,
+    "effect": {
+      "movementSpeed": 10
+    }
+  },
+
+  "boots-2": {
+    "name": "boots-2",
+    "fullName": "Boots of Speed II",
+    "description": "Movement speed +20",
+    "cost": 200,
+    "effect": {
+      "movementSpeed": 20
+    }
+  },
+
+  "health-amulet-1": {
+    "name": "health-amulet-1",
+    "fullName": "Health Amulet I",
+    "description": "Maximum HP +300",
+    "cost": 80,
+    "effect": {
+      "maxHP": 300
+    }
+  },
+
+  "health-amulet-2": {
+    "name": "health-amulet-2",
+    "fullName": "Health Amulet II",
+    "description": "Maximum HP +600",
+    "cost": 200,
+    "effect": {
+      "maxHP": 600
+    }
+  },
+
+  "mana-amulet-1": {
+    "name": "mana-amulet-1",
+    "fullName": "Mana Amulet I",
+    "description": "Maximum Mana +100",
+    "cost": 80,
+    "effect": {
+      "maxMana": 100
+    }
+  },
+
+  "mana-amulet-2": {
+    "name": "mana-amulet-2",
+    "fullName": "Mana Amulet II",
+    "description": "Maximum Mana +200",
+    "cost": 200,
+    "effect": {
+      "maxMana": 200
+    }
+  },
+
+  "defense-potion": {
+    "name": "defense-potion",
+    "fullName": "Defense potion",
+    "description": "Defense +50 for 5 sec.",
+    "cost": 50,
+    "usable": true,
+    "effect": {
+      "defense": 50,
+      "time": 5000
+    }
+  },
+
+  "attack-damage-potion": {
+    "name": "attack-damage-potion",
+    "fullName": "Potion of Attack Damage",
+    "description": "Attack damage +150 for 5 sec.",
+    "cost": 50,
+    "usable": true,
+    "effect": {
+      "attackDamage": 100,
+      "time": 5000
+    }
+  },
+
+  "health-potion": {
+    "name": "health-potion",
+    "fullName": "Health Potion",
+    "description": "Heals for 1000 HP",
+    "cost": 50,
+    "usable": true,
+    "power": {
+      "hp": 1000
+    },
+    "effect": {
+    }
+  },
+
+  "mana-potion": {
+    "name": "mana-potion",
+    "fullName": "Mana Potion",
+    "description": "Restores 400 Mana",
+    "cost": 50,
+    "usable": true,
+    "power": {
+      "mana": 400
+    },
+    "effect": {
+    }
+  },
+
+  "teleportation-scroll": {
+    "name": "teleportation-scroll",
+    "fullName": "Teleportation Scroll",
+    "description": "Teleports hero to the base in 2 seconds",
+    "cost": 50,
+    "usable": true,
+    "effect": {
+    },
+    "animation": {
+      "frameWidth": 180,
+      "frameHeight": 196,
+      "frameRate": 0.333,
+      "numberOfFrames": 1
+    }
+  }
+}

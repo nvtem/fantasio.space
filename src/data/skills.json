@@ -1,0 +1,332 @@
+[
+  {
+    "name": "dash",
+    "power": [
+      { "distance": 150, "damage": 300 },
+      { "distance": 150, "damage": 400 },
+      { "distance": 150, "damage": 500 }
+    ],
+    "manaCost": [100, 120, 150],
+    "cooldown": [10000, 8000, 6000],
+    "fullName": "Dash",
+    "description": "Hero dashes towards and deals damage",
+    "animFrameWidth": 298,
+    "animFrameHeight": 99,
+    "animFrameRate": 3,
+    "numberOfFrames": 1
+  },
+
+  {
+    "name": "warrior-rage",
+    "power": [
+      { "attackDamage": 50, "time": 5000 },
+      { "attackDamage": 100, "time": 5000 },
+      { "attackDamage": 150, "time": 5000 }
+    ],
+
+    "manaCost": [100, 120, 150],
+    "cooldown": [10000, 9000, 8000],
+    "fullName": "Warrior Rage",
+    "description": "Hero enters a rage state and increases attack damage",
+    "animFrameWidth": 170,
+    "animFrameHeight": 180,
+    "animFrameRate": 1,
+    "numberOfFrames": 1
+  },
+
+  {
+    "name": "burning",
+    "radius": 105,
+
+    "power": [
+      { "damage": 300 },
+      { "damage": 350 },
+      { "damage": 400 }
+    ],
+
+    "manaCost": [100, 120, 150],
+    "cooldown": [12000, 9000, 7000],
+
+    "fullName": "Burning",
+    "description": "Hero sets the ground around himself on fire and deals damage",
+    "animFrameWidth": 500,
+    "animFrameHeight": 500,
+    "animFrameRate": 30,
+    "numberOfFrames": 10
+  },
+
+
+
+
+
+  {
+    "name": "battle-axe",
+    "width": 247,
+    "height": 70,
+
+    "power": [
+      { "damage": 600 },
+      { "damage": 700 },
+      { "damage": 800 }
+    ],
+
+    "manaCost": [100],
+    "cooldown": [10000],
+
+    "fullName": "Battle axe",
+    "description": "Hero throws his axe that deals damage",
+    "animFrameWidth": 526,
+    "animFrameHeight": 100,
+    "animFrameRate": 30,
+    "numberOfFrames": 10
+  },
+
+
+
+
+
+
+
+  {
+    "name": "sprint",
+
+    "power": [
+      { "movementSpeed": 10, "time": 2000 },
+      { "movementSpeed": 20, "time": 2500 },
+      { "movementSpeed": 30, "time": 3000 }
+    ],
+
+    "manaCost": [100, 120, 140],
+    "cooldown": [14000, 12000, 10000],
+
+    "fullName": "Sprint",
+    "description": "Hero moves faster for a few seconds",
+    "animFrameWidth": 179,
+    "animFrameHeight": 179,
+    "animFrameRate": 1,
+    "numberOfFrames": 1
+  },
+  {
+    "name": "invisibility",
+
+    "power": [
+      { "time": 2000 },
+      { "time": 2500 },
+      { "time": 3000 }
+    ],
+
+    "manaCost": [100, 120, 140],
+    "cooldown": [14000, 12000, 10000],
+
+    "fullName": "Invisibility",
+    "description": "Hero becomes invisible for a few seconds",
+    "animFrameWidth": 178,
+    "animFrameHeight": 178,
+    "animFrameRate": 1,
+    "numberOfFrames": 1
+  },
+  {
+    "name": "sharp-blade",
+
+    "radius": 64,
+
+    "power": [
+      { "damage": 400 },
+      { "damage": 500 },
+      { "damage": 600 }
+    ],
+
+    "manaCost": [100, 120, 140],
+    "cooldown": [10000, 8000, 6000],
+
+    "fullName": "Sharp Blade",
+    "description": "Hero hits enemies around him",
+    "animFrameWidth": 128,
+    "animFrameHeight": 128,
+    "animFrameRate": 20,
+    "numberOfFrames": 6
+  },
+  {
+    "name": "assassin-rage",
+    "power": [
+      {
+        "attackCooldown": -100,
+        "time": 10000
+      }
+    ],
+
+    "manaCost": [150],
+    "cooldown": [15000],
+
+    "fullName": "Assassin rage",
+    "description": "Hero enters a rage state and increases attack speed",
+    "animFrameWidth": 174,
+    "animFrameHeight": 182,
+    "animFrameRate": 1,
+    "numberOfFrames": 1
+  },
+
+
+
+
+
+  {
+    "name": "fire-wave",
+
+    "width": 257,
+    "height": 144,
+
+    "power": [
+      { "damage": 300 },
+      { "damage": 400 },
+      { "damage": 500 }
+    ],
+
+    "manaCost": [100, 120, 140],
+    "cooldown": [14000, 12000, 10000],
+
+    "fullName": "Fire Wave",
+    "description": "Hero releases a fire wave that deals damage",
+    "animFrameWidth": 525,
+    "animFrameHeight": 160,
+    "animFrameRate": 30,
+    "numberOfFrames": 10
+  },
+
+  {
+    "name": "ice-wave",
+    "width": 218,
+    "height": 151,
+
+    "power": [
+      { "damage": 250, "time": 1500 },
+      { "damage": 325, "time": 2000 },
+      { "damage": 400, "time": 2500 }
+    ],
+
+    "manaCost": [100, 120, 140],
+    "cooldown": [14000, 12000, 10000],
+
+    "fullName": "Ice Wave",
+    "description": "Hero releases an ice wave that deals damage and decreases movement speed of enemy heroes",
+    "animFrameWidth": 444,
+    "animFrameHeight": 180,
+    "animFrameRate": 30,
+    "numberOfFrames": 10
+  },
+  {
+    "name": "magical-blink",
+    "power": [
+
+    ],
+
+    "manaCost": [100, 120, 140],
+    "cooldown": [12000, 10000, 8000],
+
+    "fullName": "Magical Blink",
+    "description": "Hero blink towards",
+    "animFrameWidth": 169,
+    "animFrameHeight": 175,
+    "animFrameRate": 10,
+    "numberOfFrames": 3
+  },
+
+  {
+    "name": "magical-power",
+    "radius": 250,
+    "power": [
+      {
+        "attackDamage": 100,
+        "defense": 40,
+        "hpRegen": 100,
+        "manaRegen": 50,
+        "time": 10000
+      }
+    ],
+
+    "manaCost": [100],
+    "cooldown": [15000],
+
+    "fullName": "Magical Power",
+    "description": "Hero empowers himself and nearest allies for 5 seconds",
+    "animFrameWidth": 500,
+    "animFrameHeight": 500,
+    "animFrameRate": 2,
+    "numberOfFrames": 1
+  },
+
+
+
+  {
+    "name": "hook",
+
+    "manaCost": [80, 100, 120],
+    "cooldown": [10000, 9000, 8000],
+    "power": [
+      { "damage": 200 },
+      { "damage": 300 },
+      { "damage": 400 }
+    ],
+    "fullName": "Hook",
+    "description": "Throws a hook and pulls the enemy dealing damage",
+    "animFrameWidth": 681,
+    "animFrameHeight": 51,
+    "animFrameRate": 30,
+    "numberOfFrames": 19
+  },
+
+  {
+    "name": "saw-blade",
+
+    "width": 178,
+    "height": 72,
+
+    "manaCost": [80, 100, 120],
+    "cooldown": [10000, 8000, 6000],
+    "power": [
+      { "damage": 300 },
+      { "damage": 400 },
+      { "damage": 500 }
+    ],
+    "fullName": "Saw Blade",
+    "description": "Throws a saw blade thath deals damage",
+    "animFrameWidth": 356,
+    "animFrameHeight": 94,
+    "animFrameRate": 30,
+    "numberOfFrames": 9
+  },
+
+
+  {
+    "name": "eat-creep",
+    "radius": 87,
+
+    "manaCost": [80, 100, 120],
+    "cooldown": [10000, 8000, 6000],
+    "power": [
+    ],
+    "fullName": "Eat Creep",
+    "description": "Eats a friendly creep and restore health (x2)",
+    "animFrameWidth": 176,
+    "animFrameHeight": 201,
+    "animFrameRate": 15,
+    "numberOfFrames": 5
+  },
+
+  {
+    "name": "poison",
+    "radius": 113,
+
+    "manaCost": [150],
+    "cooldown": [15000],
+    "power": [
+      { "damage": 1000 }
+    ],
+    "fullName": "Poison",
+    "description": "Poisons nearby enemies and yourself for 1.5 seconds",
+    "animFrameWidth": 350,
+    "animFrameHeight": 356,
+    "animFrameRate": 10,
+    "numberOfFrames": 15
+  }
+]
