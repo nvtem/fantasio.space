@@ -55,10 +55,6 @@ export default class BattleScene extends Phaser.Scene {
   startedAt = Date.now()
 
   cameraScrollSpeed = 30
-  increaseCameraX = false
-  decreaseCameraX = false
-  increaseCameraY = false
-  decreaseCameraY = false
 
   movementOrderGO: Phaser.GameObjects.Sprite
   projectiles = {}
@@ -745,15 +741,6 @@ export default class BattleScene extends Phaser.Scene {
     this.attackLine = this.add.line(0, 0, 0, 0, 0, 0, 0xff0000).setOrigin(0, 0)
     this.movementOrderGO = this.add.sprite(0, 0, 'empty')
 
-    // if (isProduction)
-    //   document.addEventListener('mousemove', e => {
-    //     this.decreaseCameraX = e.clientX < 20
-    //     this.increaseCameraX = e.clientX > window.innerWidth - 20
-    //
-    //     this.decreaseCameraY = e.clientY < 20
-    //     this.increaseCameraY = e.clientY > window.innerHeight - 20
-    //   })
-
     if (options.showCollisions)
       loadCollisionPolygonPoints('collisions').forEach(points => {
         this.add.polygon(0, 0, points, 0xff0000, 0.3).setOrigin(0, 0)
@@ -875,25 +862,30 @@ export default class BattleScene extends Phaser.Scene {
       window.techStats.innerHTML = Math.floor(this.game.loop.actualFps) + ' fps<br>net: ' + this.netStats
 
     if (!window.chatIsActive) {
-      if (this.cursors.left.isDown || this.decreaseCameraX) {
-        this.camera.stopFollow()
+      let stopFollow = false
+
+      if (this.cursors.left.isDown) {
+        stopFollow = true
         this.camera.scrollX -= this.cameraScrollSpeed
       }
 
-      if (this.cursors.right.isDown || this.increaseCameraX) {
-        this.camera.stopFollow()
+      if (this.cursors.right.isDown) {
+        stopFollow = true
         this.camera.scrollX += this.cameraScrollSpeed
       }
 
-      if (this.cursors.up.isDown || this.decreaseCameraY) {
-        this.camera.stopFollow()
+      if (this.cursors.up.isDown) {
+        stopFollow = true
         this.camera.scrollY -= this.cameraScrollSpeed
       }
 
-      if (this.cursors.down.isDown || this.increaseCameraY) {
-        this.camera.stopFollow()
+      if (this.cursors.down.isDown) {
+        stopFollow = true
         this.camera.scrollY += this.cameraScrollSpeed
       }
+
+      if (stopFollow)
+        this.camera.stopFollow()
     }
   }
 }
