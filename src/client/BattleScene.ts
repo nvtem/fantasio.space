@@ -19,7 +19,6 @@ const accessHash = localStorage.accessHash || ' '
 const isProduction = process.env.NODE_ENV === 'production'
 const options: any = {}
 
-
 Object.keys(localStorage).forEach((key) => {
   if (key.startsWith('_')) {
     let value: string | boolean = localStorage.getItem(key)
@@ -38,8 +37,6 @@ Object.keys(localStorage).forEach((key) => {
 })
 
 window.options = options
-
-//console.log('Options: ', options)
 
 export default class BattleScene extends Phaser.Scene {
   needToCheckConnection = true
@@ -191,19 +188,6 @@ export default class BattleScene extends Phaser.Scene {
             this.chatMessages.messages.push(msg)
             this.chatMessages.updatedAt = Date.now()
             break
-
-          // case 'PLAY_SOUND_EFFECT':
-          //   const distance = Phaser.Math.Distance.Betn(
-          //     this.myPlayer.x,
-          //     this.myPlayer.y,
-          //     msg.x,
-          //     msg.y
-          //   )
-          //
-          //   const volume = distance < 600 ? (600 - distance) / 600 : 0
-          //
-          //   this.sound.play(msg.name, { volume })
-          //   break
 
           case 'PLAY_VISUAL_EFFECT':
             const gameObject = this.add.sprite(msg.x, msg.y, 'effect-' + msg.name)
@@ -401,17 +385,6 @@ export default class BattleScene extends Phaser.Scene {
     }
   }
 
-  loadAudio() {
-    // for (const skill of skills) {
-    //   const url = `/audio/effects/${skill.name}.mp3`
-    //   this.load.audio(skill.name, url)
-    // }
-
-    //this.load.audio('level-up', '/audio/effects/level-up.mp3')
-    //this.load.audio('buy-item', '/audio/effects/buy-item.mp3')
-    //this.load.audio('sell-item', '/audio/effects/sell-item.mp3')
-  }
-
   loadSpritesheets() {
     for (const skill of skills) {
       const url = `/images/skill-anims/${skill.name}.png`
@@ -420,9 +393,6 @@ export default class BattleScene extends Phaser.Scene {
         frameWidth: skill.animFrameWidth,
         frameHeight: skill.animFrameHeight
       })
-
-      //url = `/audio/effects/${skill.name}.mp3`
-      //this.load.audio(skill.name, url)
     }
 
     for (const item of <Item[]> Object.values(items)) {
@@ -636,7 +606,6 @@ export default class BattleScene extends Phaser.Scene {
   }
 
   async preload() {
-    this.loadAudio()
     this.loadImages()
     this.loadSpritesheets()
     this.load.tilemapTiledJSON('map', 'map.json')
@@ -782,8 +751,6 @@ export default class BattleScene extends Phaser.Scene {
   update() {
     if (!this.needUpdate)
       return
-
-    //console.log(this.input.mousePointer.worldX.toFixed(), this.input.mousePointer.worldY.toFixed())
 
     if (this.myPlayerSpawned) {
       let targetX: number
