@@ -4,7 +4,7 @@ import Player from "../Player";
 import {Client as ColyseusClient} from "colyseus/lib/transport/Transport";
 import {NetMessage} from "../../types";
 
-const isProd = process.env.NODE_ENV === 'production'
+const isProduction = process.env.NODE_ENV === 'production'
 
 const levelExpRequirements = [0,
   0, // для достижения 1-го уровня
@@ -23,16 +23,14 @@ export default function(room: BattleRoom, client: ColyseusClient, msg: NetMessag
   const text = msg.text
 
   if (!validate({ text }, { text: { length: { minimum: 1 } } })) {
-    if (text === '/lu' && player.level < 10) {
+    if (text === '/lu' && player.level < 10 && !isProduction) {
       player.increaseLevelByOne()
       player.needExpToNextLevel = player.level < 10 ? levelExpRequirements[player.level + 1] : 9999
-    } else if (text === '/l10') {
+    } else if (text === '/l10' && !isProduction) {
       Array.from(Array(10 - player.level)).map(() => {
         player.increaseLevelByOne()
         player.needExpToNextLevel = player.level < 10 ? levelExpRequirements[player.level + 1] : 9999
       })
-    } else if (text === '/ad_finish') {
-      room.endBattle(player.team)
     } else {
       room.broadcastChatMessage({
         team: player.team,
