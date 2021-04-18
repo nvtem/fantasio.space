@@ -14,8 +14,8 @@ import { sleep, loadCollisionPolygonPoints } from '../common/functions'
 
 declare const window: any
 
-const name = localStorage.name || 'guest'
-const accessHash = localStorage.accessHash || ' '
+const name = localStorage.name
+const accessHash = localStorage.accessHash
 const isProduction = process.env.NODE_ENV === 'production'
 const options: any = {}
 
@@ -617,9 +617,8 @@ export default class BattleScene extends Phaser.Scene {
     this.connectToRoom()
     document.dispatchEvent(new Event('hide-loading-and-show-ui'))
     this.input.setDefaultCursor('url(/images/pointer.png), pointer')
-    const accessHash = localStorage.accessHash
 
-    if (!(name === 'guest' || (name && accessHash)))
+    if (!(name && accessHash))
       location.href = '/'
 
     this.createAnimations()
