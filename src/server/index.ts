@@ -8,12 +8,12 @@ import { Server as ColyseusServer } from 'colyseus'
 import cors from 'cors'
 import { monitor } from "@colyseus/monitor"
 import path from 'path'
-import https from 'https'
 import BattleRoom from './BattleRoom'
 import Model from "./Model"
 import PlayerModel from "./PlayerModel"
 import notifier from 'node-notifier'
-import type { ServerOptions as HTTPServerOptions, Server as HTTPServer } from 'https'
+import http from 'http'
+import https from 'https'
 require('dotenv').config()
 const bodyParserJson = bodyParser.json()
 
@@ -27,27 +27,28 @@ function generateRandomString(length: number): string {
   return result;
 }
 
-const isProd = process.env.NODE_ENV === 'production'
+const isProduction = process.env.NODE_ENV === 'production'
 
-const battleServerPort = isProd ? 500 : 1500
-const httpServerPort = isProd ? 443 : 1443
-const startStatic = isProd
+const colyseusPort = isProduction ? 500 : 1500
+const APIAndStaticPort = isProduction ? 443 : 1443
+const startStatic = isProduction
 
 const gameApp = express()
 
 gameApp.use(cors());
 gameApp.use(express.json());
 
-const SSLOptions = {
-  key: fs.readFileSync(path.resolve('./src/server', 'private.key')),
-  cert: fs.readFileSync(path.resolve('./src/server', 'certificate.crt')),
-  ca: fs.readFileSync(path.resolve('./src/server', 'ca_bundle.crt'))
-}
+const SSLOptions = isProduction
+  ? {
+      key: fs.readFileSync(path.resolve('./src/server', 'private.key')),
+      cert: fs.readFileSync(path.resolve('./src/server', 'certificate.crt')),
+      ca: fs.readFileSync(path.resolve('./src/server', 'ca_bundle.crt'))
+    }
+  : {}
 
-//===
-
-//https
-const colyseusWebServer: HTTPServer = https.createServer(SSLOptions, gameApp);
+const colyseusWebServer = isProduction
+  ? https.createServer(SSLOptions, gameApp)
+  : http.createServer(gameApp)
 
 const gameServer: ColyseusServer = new ColyseusServer({
   server: colyseusWebServer
@@ -58,12 +59,13 @@ gameServer.define('battle', BattleRoom)
 
 //gameApp.use("/admin", monitor())
 
-gameServer.listen(battleServerPort);
-console.log(`╔${'═'.repeat(30)}╗`)
-console.log(`║ Colyseus (http, ws): ${battleServerPort}    ║`)
+gameServer.listen(colyseusPort);
 
-//===
+let protocol = isProduction ? 'HTTPS' : 'HTTP'
+console.log(`Colyseus ${protocol}: ${colyseusPort}`)
 
+protocol = isProduction ? 'WSS' : 'WS'
+console.log(`Colyseus ${protocol}: ${colyseusPort}`)
 
 const httpApp = express()
 
@@ -82,7 +84,7 @@ const mongoClientOptions: mongodb.MongoClientOptions = {
   useUnifiedTopology: true
 }
 
-const mongoDBUrl = isProd ? process.env.DB_URL_PROD : process.env.DB_URL_DEV
+const mongoDBUrl = isProduction ? process.env.DB_URL_PROD : process.env.DB_URL_DEV
 const mongoClient = new mongodb.MongoClient(mongoDBUrl, mongoClientOptions)
 
 mongoClient.connect((err, client) => {
@@ -202,11 +204,21 @@ mongoClient.connect((err, client) => {
     }
   })
 
-  var httpServer = https.createServer(SSLOptions, httpApp);
+  const APIAndStaticWebServer = isProduction
+    ? https.createServer(SSLOptions, httpApp)
+    : http.createServer(httpApp)
 
-  httpServer.listen(httpServerPort, () => {
-    console.log(`║ API (${startStatic ? '+' : '-'} static): ${httpServerPort} ${' '.repeat(8)}║`)
-    console.log(`╚${'═'.repeat(30)}╝`)
+  APIAndStaticWebServer.listen(APIAndStaticPort, () => {
+    const protocol = isProduction ? 'HTTPS' : 'HTTP'
+    console.log(`API ${protocol}: ${APIAndStaticPort}`)
+
+    if (startStatic)
+      console.log(`Static ${protocol}: ${APIAndStaticPort}`)
+    else
+      console.log('Static HTTP: 1000')
+
+    console.log('-'.repeat(20))
+    console.log("Server Started!\n")
   })
 
   notifier.notify({
@@ -214,13 +226,13 @@ mongoClient.connect((err, client) => {
     sound: false
   })
 
-  if (process.env.NODE_ENV === 'production') {
-    const httpServer80 = express()
+  if (isProduction) {
+    const webServer80 = express()
 
-    httpServer80.get('*', (req, res) => {
+    webServer80.get('*', (req, res) => {
       res.redirect('https://' + req.headers.host)
     })
 
-    httpServer80.listen(80)
+    webServer80.listen(80)
   }
 })

@@ -76,7 +76,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "dev_client": "webpack-dev-server --https --mode development",
+    "dev_client": "webpack-dev-server --mode development",
     "dev_server": "cross-env NODE_ENV=development ts-node -P tsconfig-server.json ./src/server/index.ts",
     "build": "cross-env webpack --mode production",
     "start": "cross-env NODE_ENV=production ts-node -P tsconfig-server.json ./src/server/index.ts",

@@ -585,9 +585,18 @@ export default class BattleScene extends Phaser.Scene {
   }
 
   connectToRoom() {
-    const port = process.env.NODE_ENV === 'production' || localStorage.connectToProductionServer ? 500 : 1500
-    const url = `wss://${location.hostname}:${port}`
+    let protocol
+    let port
 
+    if (isProduction) {
+      protocol = 'wss://'
+      port = 500
+    } else {
+      protocol = 'ws://'
+      port = 1500
+    }
+
+    const url = `${protocol}${location.hostname}:${port}`
     const colyseusClient = new colyseus.Client(url)
 
     colyseusClient.joinOrCreate('battle', { name, accessHash }).then(room => {

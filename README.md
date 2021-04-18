@@ -10,10 +10,9 @@ Submit your pull requests with bug fixes, code improvement and new features!
 ## Development
 1. Install Node.js (version 14 or above) and MongoDB
 2. Create fantasio-space database
-3. Run ```npm i```
+3. Run ```npm install```
 4. Run ```npm run dev_server``` and ```npm run dev_client```
-5. Open https://localhost:1000  
-_Browser will warn you about SSL security issue. Allow to open site, then open https://localhost:1443 and do the same._ 
+5. Open http://localhost:1000
 
 ## Screenshots
 ![Screenshot](doc/images/screenshot-1.jpg)
