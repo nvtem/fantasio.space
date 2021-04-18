@@ -47,7 +47,6 @@ export default class BattleScene extends Phaser.Scene {
     red: 0
   }
 
-  bytesReceivedBySecond: number[] = []
   startedAt = Date.now()
 
   cameraScrollSpeed = 30
