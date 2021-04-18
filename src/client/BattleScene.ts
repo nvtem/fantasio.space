@@ -50,7 +50,6 @@ export default class BattleScene extends Phaser.Scene {
     red: 0
   }
 
-  netStats = 'netStats'
   bytesReceivedBySecond: number[] = []
   startedAt = Date.now()
 
@@ -225,23 +224,8 @@ export default class BattleScene extends Phaser.Scene {
     })
   }
 
-  addNetStats(bytes: number) {
-    const now = Date.now()
-    const index = Math.floor(now / 1000)
-
-    if (this.bytesReceivedBySecond[index])
-      this.bytesReceivedBySecond[index] += bytes
-    else
-      this.bytesReceivedBySecond[index] = bytes
-
-    this.netStats = (this.bytesReceivedBySecond[index - 1] / (1024 * 1024)).toFixed(2) + ' MB/s'
-  }
-
   setRoomOnStateChangeEventListener() {
     this.room.onStateChange(state => {
-      if (options.showTechStats)
-        this.addNetStats(JSON.stringify(state).length)
-
       this.updateBuildings(state)
       this.updatePlayers(state.players)
       this.updateCreeps(state.creeps)
@@ -649,11 +633,6 @@ export default class BattleScene extends Phaser.Scene {
   initColyseusRoom(room: colyseus.Room) {
     this.room = room
     this.room.onMessage('*', () => {})
-
-    // if (options.showTechStats)
-    //   this.room.connection.ws.addEventListener('message', (event) => {
-    //     this.addNetStats(new Uint8Array(event.data).length)
-    //   })
   }
 
   async preload() {
@@ -859,7 +838,7 @@ export default class BattleScene extends Phaser.Scene {
     }
 
     if (options.showTechStats)
-      window.techStats.innerHTML = Math.floor(this.game.loop.actualFps) + ' fps<br>net: ' + this.netStats
+      window.techStats.innerHTML = Math.floor(this.game.loop.actualFps) + ' fps'
 
     if (!window.chatIsActive) {
       let stopFollow = false
