@@ -6,7 +6,6 @@ import express from 'express'
 import mongodb from "mongodb"
 import { Server as ColyseusServer } from 'colyseus'
 import cors from 'cors'
-import { monitor } from "@colyseus/monitor"
 import path from 'path'
 import BattleRoom from './BattleRoom'
 import Model from "./Model"
@@ -55,10 +54,6 @@ const gameServer: ColyseusServer = new ColyseusServer({
 })
 
 gameServer.define('battle', BattleRoom)
-//gameServer.simulateLatency(150)
-
-//gameApp.use("/admin", monitor())
-
 gameServer.listen(colyseusPort);
 
 let protocol = isProduction ? 'HTTPS' : 'HTTP'
