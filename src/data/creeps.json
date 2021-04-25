@@ -135,61 +135,102 @@
       },
 
 
-      {
-        "type": "eye",
-        "x": 677,
-        "y": 1817,
-        "direction": "up-stay"
-      },
-      {
-        "type": "bat",
-        "x": 764,
-        "y": 1846,
-        "direction": "up-stay"
-      },
+
 
       {
         "type": "eye",
-        "x": 1893,
-        "y": 541
+        "x": 1212,
+        "y": 1350,
+        "direction": "down-stay"
+      },
+      {
+        "type": "beaver",
+        "x": 1163,
+        "y": 1424,
+        "direction": "down-stay"
       },
       {
         "type": "bat",
-        "x": 1931,
-        "y": 593
+        "x": 1261,
+        "y": 1424,
+        "direction": "down-stay"
       },
+
+
+
+      {
+        "type": "bat",
+        "x": 2203,
+        "y": 1841,
+        "direction": "down-stay"
+      },
+      {
+        "type": "beaver",
+        "x": 2140,
+        "y": 1860,
+        "direction": "down-stay"
+      },
+      {
+        "type": "eye",
+        "x": 2163,
+        "y": 1936,
+        "direction": "down-stay"
+      },
+
+
 
       {
         "type": "eye",
-        "x": 2156,
-        "y": 1962
+        "x": 2510,
+        "y": 1512,
+        "direction": "down-stay"
       },
       {
         "type": "bat",
-        "x": 2079,
-        "y": 1960
+        "x": 2605,
+        "y": 1548,
+        "direction": "down-stay"
       },
+
+
+
+      {
+        "type": "bat",
+        "x": 978,
+        "y": 1648,
+        "direction": "down-stay"
+      },
+
+
 
       {
         "type": "beaver",
-        "x": 754,
-        "y": 1395
+        "x": 685,
+        "y": 1800,
+        "direction": "down-stay"
       },
       {
-        "type": "beaver",
-        "x": 822,
-        "y": 1366
+        "type": "eye",
+        "x": 716,
+        "y": 1900,
+        "direction": "down-stay"
       },
+
 
       {
         "type": "beaver",
-        "x": 2545,
-        "y": 1590
+        "x": 2000,
+        "y": 585,
+        "direction": "down-stay"
       },
+
+
+
       {
-        "type": "beaver",
-        "x": 2588,
-        "y": 1632
+        "type": "bat",
+        "x": 1400,
+        "y": 2733,
+        "direction": "down-stay"
       }
     ]
   }
