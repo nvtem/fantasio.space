@@ -10,7 +10,6 @@ import path from 'path'
 import BattleRoom from './BattleRoom'
 import Model from "./Model"
 import PlayerModel from "./PlayerModel"
-import notifier from 'node-notifier'
 import http from 'http'
 import https from 'https'
 require('dotenv').config()
@@ -214,11 +213,6 @@ mongoClient.connect((err, client) => {
 
     console.log('-'.repeat(20))
     console.log("Server Started!\n")
-  })
-
-  notifier.notify({
-    message: 'Server started',
-    sound: false
   })
 
   if (isProduction) {
