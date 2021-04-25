@@ -9,8 +9,6 @@ import Creep from "../Creep"
 import { NetMessage } from "../../types"
 import Unit from '../Unit'
 
-const isProduction = process.env.NODE_ENV === 'production'
-
 function inLineOfSight(unit1: Unit, unit2: Unit, room: BattleRoom) {
   const line = new Phaser.Geom.Line(unit1.x, unit1.y, unit2.x, unit2.y)
   const intersection = Phaser.Geom.Intersects.GetLineToPolygon(line, room.collisionPolygons)
@@ -34,7 +32,7 @@ export default function(room: BattleRoom, client: ColyseusClient, msg: NetMessag
   if (!skill)
     return
 
-  if (!isProduction || skill.currentCooldown === 0) {
+  if (skill.currentCooldown === 0) {
     let attackCircle: Phaser.Geom.Circle
     let rotation = msg.rotation
 
@@ -47,35 +45,29 @@ export default function(room: BattleRoom, client: ColyseusClient, msg: NetMessag
     const skillLevel = player.skillLevels[index]
     const manaCost = skill.manaCost[skillLevel - 1]
 
-    if ((!isProduction || player.mana >= manaCost) && skillLevel > 0) {
+    if (player.mana >= manaCost && Date.now() > player.cantUseSkillsUntil && skillLevel > 0) {
       player.lastActivityAt = Date.now()
+
       if (!player.visible)
         player.visible = true
-
-      if (isProduction)
-        player.mana -= manaCost
 
       let damage = 0
 
       if (skill.power[skillLevel - 1] && skill.power[skillLevel - 1].damage)
         damage = skill.power[skillLevel - 1].damage
 
-      room = room
-      
       switch (skill.name) {
         case 'burning':
-          sleep(100).then(() => {
-            attackCircle = new Phaser.Geom.Circle(player.x, player.y, skill.radius)
+          attackCircle = new Phaser.Geom.Circle(player.x, player.y, skill.radius)
 
-            room.applyToEnemyCreeps(player.team, (victim: Creep) => {
-              if (Phaser.Geom.Intersects.CircleToCircle(attackCircle, victim.circle))
-                room.damageUnit(player, victim, damage)
-            })
+          room.applyToEnemyCreeps(player.team, (victim: Creep) => {
+            if (Phaser.Geom.Intersects.CircleToCircle(attackCircle, victim.circle))
+              room.damageUnit(player, victim, damage)
+          })
 
-            room.applyToPlayers(room.ENEMIES, player.team, (victim: Player) => {
-              if (Phaser.Geom.Intersects.CircleToCircle(attackCircle, victim.circle))
-                room.damageUnit(player, victim, damage)
-            })
+          room.applyToPlayers(room.ENEMIES, player.team, (victim: Player) => {
+            if (Phaser.Geom.Intersects.CircleToCircle(attackCircle, victim.circle))
+              room.damageUnit(player, victim, damage)
           })
 
           break
@@ -375,7 +367,8 @@ export default function(room: BattleRoom, client: ColyseusClient, msg: NetMessag
           break
       }
 
-      skill.currentCooldown = skill.cooldown[skillLevel-1]
+      skill.currentCooldown = skill.cooldown[skillLevel - 1]
+      player.cantUseSkillsUntil = Date.now() + (skill.numberOfFrames / skill.animFrameRate) * 1000
 
       room.broadcast('PLAY_ANIM', {
         type: msg.name,
@@ -383,13 +376,6 @@ export default function(room: BattleRoom, client: ColyseusClient, msg: NetMessag
         rotation,
         targetType: 'player'
       })
-
-      // room.broadcast('PLAY_SOUND_EFFECT', {
-      //   name: msg.name,
-      //   x: player.x,
-      //   y: player.y
-      // })
     }
-
   }
 }

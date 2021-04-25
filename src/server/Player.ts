@@ -83,6 +83,7 @@ export default class Player extends Creature {
   attackSprite: string
   needExpToNextLevel = 100
   direction = 'down-stay'
+  cantUseSkillsUntil = 0
 
   characteristics: {
     basic: ICharacteristics,

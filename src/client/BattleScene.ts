@@ -287,7 +287,7 @@ export default class BattleScene extends Phaser.Scene {
 
     for (const [index, key] of ['ONE', 'TWO', 'THREE', 'FOUR'].entries()) {
       this.input.keyboard.addKey(key, false).on('down', () => {
-        if (!this.myPlayer.animGO.anims.isPlaying && !window.chatIsActive)
+        if (!window.chatIsActive)
           this.myPlayer.useSkill(
             this.myPlayer.skills[index].name,
             this.input.mousePointer.worldX,
