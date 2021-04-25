@@ -17,6 +17,9 @@
               <a class="social-link" href="https://discord.gg/2byDHHSBjS" target="_blank">
                 <img :src="'/images/discord-big.png'"/>
               </a>
+              <a class="social-link ml-1" href="https://github.com/nvtem/fantasio.space" target="_blank">
+                <img :src="'/images/github.png'"/>
+              </a>
             </div>
 
             <div class="text-center pt-2">
