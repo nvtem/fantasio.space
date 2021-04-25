@@ -1,44 +1,24 @@
-<template>
-  <div class="root">
-    <h1 class="title title text-center text-white mt-4">Fantasio Space</h1>
-    <p class="description text-center text-white pb-4">Browser Multiplayer Online Battle Arena</p>
-    <div class="mb-4 flex-center" id="fantasio-space_728x90">
-      <script type="application/javascript">
+<template lang="pug">
+  .root
+    h1.title.title.text-center.text-white.mt-4 Fantasio Space
+    p.description.text-center.text-white.pb-4 Browser Multiplayer Online Battle Arena
+    #fantasio-space_728x90.mb-4.flex-center
+      script(type='application/javascript').
         aiptag.cmd.display.push(function() { aipDisplayTag.display('fantasio-space_728x90'); });
-      </script>
-    </div>
-    <div class="central-box">
-      <b-row class="mb-4">
-        <b-col sm="6">
-          <div>
-            <LoginBox></LoginBox>
-
-            <div class="d-block text-center mt-3">
-              <a class="social-link" href="https://discord.gg/2byDHHSBjS" target="_blank">
-                <img :src="'/images/discord-big.png'"/>
-              </a>
-              <a class="social-link ml-1" href="https://github.com/nvtem/fantasio.space" target="_blank">
-                <img :src="'/images/github.png'"/>
-              </a>
-            </div>
-
-            <div class="text-center pt-2">
-              <a class="iogames-link" href="https://iogames.space/" target="_blank">More IO games</a>
-            </div>
-
-<!--            <div id="fantasio-space_300x250" class="flex-center mt-4">-->
-<!--              <script type="application/javascript" class="text-center">-->
-<!--                aiptag.cmd.display.push(function() { aipDisplayTag.display('fantasio-space_300x250'); });-->
-<!--              </script>-->
-<!--            </div>-->
-          </div>
-        </b-col>
-        <b-col sm="6">
-          <TopPlayers></TopPlayers>
-        </b-col>
-      </b-row>
-    </div>
-  </div>
+    .central-box
+      b-row.mb-4
+        b-col(sm='6')
+          div
+            LoginBox
+            .d-block.text-center.mt-3
+              a.social-link(href='https://discord.gg/2byDHHSBjS' target='_blank')
+                img(:src="'/images/discord-big.png'")
+              a.social-link.ml-1(href='https://github.com/nvtem/fantasio.space' target='_blank')
+                img(:src="'/images/github.png'")
+            .text-center.pt-2
+              a.iogames-link(href='https://iogames.space/' target='_blank') More IO games
+        b-col(sm='6')
+          TopPlayers
 </template>
 
 <script lang="ts">
