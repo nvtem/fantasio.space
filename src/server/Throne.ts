@@ -9,7 +9,7 @@ export default class Throne extends Building {
   towers: Tower[]
 
   constructor(x: number, y: number, width: number, height: number, team: string, endBattle: Function, towers: Tower[], getRoom: Function) {
-    super(x, y, width, height, team, getRoom)
+    super(x + 75, y + 60, width, height, team, getRoom)
 
     this.maxHP = 30000
     this.hp = this.maxHP

@@ -235,9 +235,6 @@ export default class BattleRoom extends ColyseusRoom {
         if (victim.type === 'tower') {
           victimX = victim.x + 15
           victimY = victim.y + 30
-        } else if (victim.type === 'throne') {
-          victimX = victim.x + 50
-          victimY = victim.y + 50
         } else {
           victimX = victim.x
           victimY = victim.y
