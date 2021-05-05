@@ -1,9 +1,6 @@
 # Fantasio Space
 Browser Multiplayer Online Battle Arena. Made with TypeScript, Phaser, Vue.js, Colyseus and MongoDB.
 
-## Contributing
-Submit your pull requests with bug fixes, code improvement and new features!
-
 ## Development
 1. Install Node.js (version 14 or above) and MongoDB
 2. Create fantasio-space database
