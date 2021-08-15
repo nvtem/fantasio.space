@@ -88,6 +88,8 @@ export default class BattleScene extends Phaser.Scene {
       if (this.needUpdate || type === 'SPAWN') {
         let id = (msg && msg.id) ? msg.id : ''
 
+        let gameObject: Phaser.GameObjects.Sprite
+
         switch (type) {
           case 'SPAWN':
             this.players[this.room.sessionId] = this.myPlayer = new Player(this, this.room, true, 'blue', 'warrior', this.myPlayer)
@@ -115,6 +117,15 @@ export default class BattleScene extends Phaser.Scene {
               const creep = this.creeps[id]
               creep.playAnim('projectile-fire', msg.rotation)
             }
+            break
+
+          case 'PLAY_CUSTOM_ANIM':
+            gameObject = this.physics.add.sprite(msg.x, msg.y, 'empty')
+            gameObject.play(msg.name)
+
+            setTimeout(() => {
+              gameObject.destroy()
+            }, 3000)
             break
 
           case 'FOCUS_ON_HERO':
@@ -189,7 +200,7 @@ export default class BattleScene extends Phaser.Scene {
             break
 
           case 'PLAY_VISUAL_EFFECT':
-            const gameObject = this.add.sprite(msg.x, msg.y, 'effect-' + msg.name)
+            gameObject = this.add.sprite(msg.x, msg.y, 'effect-' + msg.name)
             gameObject.depth = 500
 
             if (msg.attachToPlayer)
@@ -414,6 +425,11 @@ export default class BattleScene extends Phaser.Scene {
       frameHeight: 50
     })
 
+    this.load.spritesheet('death', '/images/anims/death.png', {
+      frameWidth: 125,
+      frameHeight: 125
+    })
+
     this.load.spritesheet('heroes', '/images/spritesheets/heroes.png', {
       frameWidth: 48,
       frameHeight: 48
@@ -489,6 +505,14 @@ export default class BattleScene extends Phaser.Scene {
       key: 'movement-order-attack',
       frames: this.anims.generateFrameNumbers('movement-order-attack', { start: 0, end: 10 }),
       frameRate: 40,
+      repeat: 0
+    })
+
+    // загрузка анимации смерти
+    this.anims.create({
+      key: 'death',
+      frames: this.anims.generateFrameNumbers('death', { start: 2, end: 15 }),
+      frameRate: 13,
       repeat: 0
     })
 

@@ -423,6 +423,13 @@ export default class Player extends Creature {
       this.visible = false
       this.direction = 'down-stay'
 
+
+      this.getRoom().broadcast('PLAY_CUSTOM_ANIM', {
+        name: 'death',
+        x: this.x,
+        y: this.y
+      })
+
       this.respawn()
 
       // for (const [id, projectile] of Object.entries<any>(this.getRoom().state.projectiles))
