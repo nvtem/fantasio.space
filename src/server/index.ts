@@ -208,8 +208,6 @@ mongoClient.connect((err, client) => {
 
     if (startStatic)
       console.log(`Static ${protocol}: ${APIAndStaticPort}`)
-    else
-      console.log('Static HTTP: 1000')
 
     console.log('-'.repeat(20))
     console.log("Server Started!\n")
