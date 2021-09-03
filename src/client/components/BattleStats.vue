@@ -1,9 +1,9 @@
 <template lang="pug">
   .root
-    b-modal(scrollable id="modal-battle-stats" ok-only ok-variant="success" static @ok="closed" @close="closed" @hide="closed")
+    b-modal(scrollable id="modal-battle-stats" ok-only ok-variant="success" static)
       template(#modal-title) Game over! {{ teamWinner | capitalize }} team won.
 
-      b-table(:tbody-tr-class="rowClass" :fields="totalFields" :items="total" thead-class="d-none" :bordered="false" caption-top borderless class="table-sm")
+      b-table(:tbody-tr-class="rowClass" :fields="totalFields" :items="items.total" thead-class="d-none" :bordered="false" caption-top borderless class="table-sm")
         template(#cell(name)="data")
           img(:src="crownImgSrcs[data.item.crown]" class="crown")
           span.name(:class="{ blue: data.item.team === 'blue', red: data.item.team === 'red' }") {{ data.value }}
@@ -11,25 +11,23 @@
           img(:src="diamondImgSrc" class="diamond")
           span {{ data.value }}
 
-      b-table(:tbody-tr-class="rowClass" :fields="generalFields" :items="killsAssistsDeaths"  thead-class="d-none" :bordered="false" caption-html="<h5>Kills</h5>" caption-top borderless class="table-sm")
-        template(#cell(name)="data")
-          img(:src="crownImgSrcs[data.item.crown]" class="crown")
-          span.name(:class="{ blue: data.item.team === 'blue', red: data.item.team === 'red' }") {{ data.value }}
+      b-table(
+          v-for="(value, key) in fieldNames"
 
-      b-table(:tbody-tr-class="rowClass" :fields="generalFields" :items="destroyedTowers"  thead-class="d-none" :bordered="false" caption-html="<h5>Destroyed towers</h5>" caption-top borderless class="table-sm")
-        template(#cell(name)="data")
-          img(:src="crownImgSrcs[data.item.crown]" class="crown")
-          span.name(:class="{ blue: data.item.team === 'blue', red: data.item.team === 'red' }") {{ data.value }}
+          :items="items[key]"
+          :caption-html="`<h5>${value}</h5>`"
+          :key="key"
 
-      b-table(:tbody-tr-class="rowClass" :fields="generalFields" :items="totalDamage"  thead-class="d-none" :bordered="false" caption-html="<h5>Total damage</h5>" caption-top borderless class="table-sm")
-        template(#cell(name)="data")
-          img(:src="crownImgSrcs[data.item.crown]" class="crown")
-          span.name(:class="{ blue: data.item.team === 'blue', red: data.item.team === 'red' }") {{ data.value }}
-
-      b-table(:tbody-tr-class="rowClass" :fields="generalFields" :items="buffs"  thead-class="d-none" :bordered="false" caption-html="<h5>Buffs</h5>" caption-top borderless class="table-sm")
-        template(#cell(name)="data")
-          img(:src="crownImgSrcs[data.item.crown]" class="crown")
-          span.name(:class="{ blue: data.item.team === 'blue', red: data.item.team === 'red' }") {{ data.value }}
+          :tbody-tr-class="rowClass"
+          :fields="generalFields"
+          thead-class="d-none"
+          :bordered="false"
+          caption-top borderless
+          class="table-sm"
+        )
+          template(#cell(name)="data")
+            img(:src="crownImgSrcs[data.item.crown]" class="crown")
+            span.name(:class="{ blue: data.item.team === 'blue', red: data.item.team === 'red' }") {{ data.value }}
 
     #ad-preroll
 </template>
@@ -60,12 +58,14 @@
       tdClass: 'w-100px text-right'
     }]
 
-    private killsAssistsDeaths: [] = []
-    private destroyedTowers: [] = []
-    private totalDamage: [] = []
-    private buffs: [] = []
-    private total: [] = []
-    private endBattle: boolean
+    private fieldNames = {
+      killsAssistsDeaths: 'Kills',
+      destroyedTowers: 'Destroyed towers',
+      totalDamage: 'Total damage',
+      buffs: 'Buffs'
+    }
+
+    private items = {}
 
     rowClass(item: any, type: string) {
       if (!item || type !== 'row')
@@ -77,16 +77,12 @@
 
     created() {
       document.addEventListener('received-battle-stats', (e: any) => {
-        _.assign(this, e.detail.battleStats)
-        this.endBattle = e.detail.endBattle
+        _.assign(this.items, e.detail.battleStats)
+        this.$forceUpdate()
+        this.teamWinner = e.detail.teamWinner
         this.$root.$emit('bv::show::modal', 'modal-battle-stats', '#btnShow')
         window.showPreroll()
       })
-    }
-
-    closed() {
-      if (this.endBattle)
-        location.href = '/'
     }
   }
 </script>

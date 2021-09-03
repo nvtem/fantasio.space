@@ -146,8 +146,6 @@ export default class BattleScene extends Phaser.Scene {
 
           case 'BATTLE_STATS':
             document.dispatchEvent(new CustomEvent('received-battle-stats', { detail: msg }))
-            if (msg.endBattle)
-              this.needToCheckConnection = false
             break
 
           case 'CREATE_PLAYER':

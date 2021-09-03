@@ -126,7 +126,7 @@ export default class BattleRoom extends ColyseusRoom {
     return crown
   }
 
-  createBattleStats(teamWinner: string) {
+  createBattleStats() {
     const players = this.state.players
 
     const killsAssistsDeaths: BattleStatsCommonArray = Object.values<Player>(players).map(p => {
@@ -185,8 +185,7 @@ export default class BattleRoom extends ColyseusRoom {
       destroyedTowers,
       totalDamage,
       buffs,
-      total,
-      teamWinner: teamWinner
+      total
     }
   }
 
@@ -464,7 +463,7 @@ export default class BattleRoom extends ColyseusRoom {
       text: capitalize(teamWinner) + ' team won!'
     })
 
-    const battleStats = this.createBattleStats(teamWinner)
+    const battleStats = this.createBattleStats()
 
     for (const player of battleStats.total) {
       if (player.team === teamWinner)
@@ -493,7 +492,8 @@ export default class BattleRoom extends ColyseusRoom {
     await sleep(1000)
 
     this.broadcast('BATTLE_STATS', {
-      battleStats
+      battleStats,
+      teamWinner
     })
 
     await sleep(2000)
