@@ -15,8 +15,6 @@
                 img(:src="'/images/discord-big.png'")
               a.social-link.ml-3(href='https://github.com/nvtem/fantasio.space' target='_blank')
                 img(:src="'/images/github.png'")
-            .text-center.pt-2
-              a.iogames-link(href='https://iogames.space/' target='_blank') More IO games
         b-col(sm='6')
           TopPlayers
 </template>
