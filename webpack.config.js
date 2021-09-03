@@ -4,9 +4,15 @@ const { CleanWebpackPlugin: CleanPlugin } = require('clean-webpack-plugin')
 const CopyPLugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+const OnlyIfChangedPlugin = require('only-if-changed-webpack-plugin')
 
 const srcPath = path.resolve(__dirname, 'src/client')
 const distPath = path.resolve(__dirname, 'dist')
+
+const onlyIfChangedOptions = {
+  rootDir: process.cwd(),
+  devBuild: process.env.NODE_ENV !== 'production',
+}
 
 module.exports = {
   devServer: {
@@ -105,6 +111,11 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new CleanPlugin(),
+
+    new OnlyIfChangedPlugin({
+      cacheDirectory: path.join(onlyIfChangedOptions.rootDir, 'tmp/cache'),
+      cacheIdentifier: onlyIfChangedOptions
+    }),
 
     new HTMLPlugin({
       template: './index.html',
