@@ -31,6 +31,8 @@ export default function(room: BattleRoom, client: ColyseusClient, msg: NetMessag
         player.increaseLevelByOne()
         player.needExpToNextLevel = player.level < 10 ? levelExpRequirements[player.level + 1] : 9999
       })
+    } else if (text === '/end' && !isProduction) {
+      room.endBattle(player.team)
     } else {
       room.broadcastChatMessage({
         team: player.team,
