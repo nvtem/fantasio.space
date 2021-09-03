@@ -340,7 +340,14 @@ export default class BattleRoom extends ColyseusRoom {
         // она была крипом
         case 'creep':
           _victim = victim as Creep
+          const { x, y } = _victim
           exp = _victim.neutralType === '' ? 40 : creepsDef.neutral.types[_victim.neutralType].exp
+
+          this.broadcast('PLAY_CUSTOM_ANIM', {
+            name: 'death',
+            x,
+            y
+          })
 
           if (damageDealer && damageDealer.type === 'player') {
             const _damageDealer = damageDealer as Player
@@ -351,16 +358,16 @@ export default class BattleRoom extends ColyseusRoom {
 
             _damageDealer.client.send('PLAY_VISUAL_EFFECT', {
               name: 'money-' + money,
-              x: victim.x,
-              y: victim.y - 50
+              x,
+              y: y - 50
             })
 
             if (_victim.neutralType === 'dragon') {
               const id = this.lastRuneId++
 
               const rune = this.state.runes[id] = {
-                x: _victim.x,
-                y: _victim.y,
+                x,
+                y,
                 type: 'double-damage'
               }
 
@@ -372,7 +379,7 @@ export default class BattleRoom extends ColyseusRoom {
                 .then(async () => {
                   while (true) {
                     if (_victim.neutralType === 'dragon' && Object.values<any>(this.state.runes).some(rune =>
-                      Phaser.Math.Distance.Between(rune.x, rune.y, _victim.x, _victim.y) < 10)
+                      Phaser.Math.Distance.Between(rune.x, rune.y, x, y) < 10)
                     ) {
                       await sleep(1000)
                     } else {
@@ -381,8 +388,8 @@ export default class BattleRoom extends ColyseusRoom {
                       const creep = this.state.creeps[id] = new Creep(
                         id,
                         'neutral',
-                        _victim.x,
-                        _victim.y,
+                        x,
+                        y,
                         [],
                         this.getRoom.bind(this),
                         _victim.maxHP,
@@ -398,8 +405,8 @@ export default class BattleRoom extends ColyseusRoom {
                       this.broadcast('CREATE_CREEP', {
                         id,
                         team: 'neutral',
-                        x: creep.x,
-                        y: creep.y,
+                        x,
+                        y,
                         neutralType: _victim.neutralType,
                         maxHP: _victim.maxHP
                       })
