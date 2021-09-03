@@ -71,12 +71,10 @@
     "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
-    "concurrently": "^5.3.0",
     "ts-node-dev": "^1.1.8",
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "dev": "concurrently \"npm run dev_server\" \"npm run dev_client",
     "dev_client": "webpack-dev-server --mode development",
     "dev_server": "cross-env NODE_ENV=development ts-node-dev -P tsconfig-server.json ./src/server/index.ts",
     "build": "cross-env webpack --mode production",
