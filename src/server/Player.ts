@@ -462,7 +462,6 @@ export default class Player extends Creature {
 
     this.setPosition(geometry.spawn[this.team].x, geometry.spawn[this.team].y)
 
-    this.client.send('FOCUS_ON_HERO')
     this.hp = this.characteristics.total.maxHP
     this.mana = this.characteristics.total.maxMana
 
@@ -474,7 +473,6 @@ export default class Player extends Creature {
       await sleep(1000)
     }
 
-    this.client.send('FOCUS_ON_HERO')
     this.client.send('HIDE_MESSAGE')
     this.controlEnabled = true
     this.visible = true
