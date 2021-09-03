@@ -25,9 +25,6 @@ export default abstract class Creature {
   updateDirection(direction: string, force = false) {
     if (direction !== this.direction || force) {
       this.direction = direction
-      //this.bodyGO.anims.stop()
-      const tmp = `${this.getAnimationKeyPrefix()}-${direction}`
-
       this.bodyGO.anims.play(`${this.getAnimationKeyPrefix()}-${direction}`)
     }
   }

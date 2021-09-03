@@ -107,16 +107,7 @@ export default class BattleScene extends Phaser.Scene {
             break
 
           case 'PLAY_ANIM':
-            if (msg.targetType === 'player') {
-              const player = this.players[msg.sessionId]
-              player.playAnim(msg.type, msg.rotation)
-            } else if (msg.targetType === 'tower') {
-              const tower = this.towers[msg.index]
-              tower.playAttackAnim(msg.rotation)
-            } else if (msg.targetType === 'creep') {
-              const creep = this.creeps[id]
-              creep.playAnim('projectile-fire', msg.rotation)
-            }
+            this.players[msg.sessionId].playAnim(msg.type, msg.rotation)
             break
 
           case 'PLAY_CUSTOM_ANIM':

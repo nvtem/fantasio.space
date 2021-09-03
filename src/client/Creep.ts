@@ -17,12 +17,6 @@ export default class Creep extends Creature {
     this.circle = new Phaser.Geom.Circle(x, y, 25)
 
     this.bodyGO = scene.physics.add.sprite(x, y, 'empty')
-    this.animGO = scene.physics.add.sprite(x, y, 'empty')
-    this.animGO.depth = 200
-    this.animGO.on('animationcomplete', () => {
-      this.animGO.visible = false
-    })
-
     this.hpGO = scene.add.graphics({ x, y })
 
     this.setInteractive()
@@ -61,6 +55,5 @@ export default class Creep extends Creature {
   destroy() {
     this.bodyGO.destroy()
     this.hpGO.destroy()
-    this.animGO.destroy()
   }
 }

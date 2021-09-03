@@ -17,10 +17,4 @@ export default class Tower extends Building {
     super(team + '-tower', scene, staticGroup, x, y, myPlayer)
     this.rect = new Phaser.Geom.Rectangle(x, y, 32, 96)
   }
-
-  playAttackAnim(rotation: number) {
-    this.animGO.visible = true
-    this.animGO.rotation = rotation
-    //this.animGO.anims.play('basic-fire-attack')
-  }
 }
