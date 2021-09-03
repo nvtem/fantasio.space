@@ -75,10 +75,3 @@ export type Item = {
     numberOfFrames: number
   }
 }
-
-// export type TCreepDef = {
-//   team: 'blue' | 'red'
-//   spawnX: number,
-//   spawnY: number,
-//   waypoints: number[][]
-// }
