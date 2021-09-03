@@ -501,7 +501,7 @@ export default class BattleScene extends Phaser.Scene {
     this.anims.create({
       key: 'death',
       frames: this.anims.generateFrameNumbers('death', { start: 2, end: 15 }),
-      frameRate: 13,
+      frameRate: 15,
       repeat: 0
     })
 
