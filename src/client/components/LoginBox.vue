@@ -67,16 +67,6 @@
     methods: {
       update() {
         this.$store.commit('auth/loadUserInfo')
-
-        setInterval(() => {
-          if (!this.$route.fullPath.includes('/play')) {
-            if (this.nameFromStore)
-              this.$root.$emit('showRankedGameWidget')
-            else
-              this.$root.$emit('hideRankedGameWidget')
-          }
-        }, 500)
-
       },
 
       play() {
