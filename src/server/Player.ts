@@ -287,12 +287,11 @@ export default class Player extends Creature {
     }, time)
   }
 
-  temporarilyMakeInvisible(time: number) {
+  async temporarilyMakeInvisible(time: number) {
+    await sleep(100)
     this.visible = false
-    setTimeout(() => {
-      if (!this.visible)
-        this.visible = true
-    }, time)
+    await sleep(time)
+    this.visible = true
   }
 
   buyItem(item: Item) {
