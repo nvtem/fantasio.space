@@ -43,24 +43,6 @@ export default {
   actions: {
     _vm: (() => {}) as any,
 
-    login({ commit }: { commit: Function }, data: any) {
-      return axios.post(this._vm.$APIEndpoint + '/player/login', {
-        name: data.name,
-        password: data.password
-      }).then(r => {
-        if (r.data.success) {
-          commit('setUserInfo', {
-            name: data.name,
-            accessHash: r.data.accessHash
-          })
-          commit('loadUserInfo')
-          return true
-        } else {
-          throw r.data.message
-        }
-      })
-    },
-
     register({ commit }: { commit: Function }, data: any) {
       return axios.post(this._vm.$APIEndpoint + '/player/register', {
         name: data.name
