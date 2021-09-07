@@ -1,15 +1,15 @@
 <template lang="pug">
-  div.shop
-    div.open-shop-btn(v-show="myPlayer.canBuyItems && myPlayer.my" @click="show = !show")
+  .shop
+    .open-shop-btn(v-show="myPlayer.canBuyItems && myPlayer.my" @click="show = !show")
       img(:src="'/images/icons/shop.png'")
 
-    div.window(v-show="show && myPlayer.canBuyItems")
+    .window(v-show="show && myPlayer.canBuyItems")
       h1 Shop
-      div.items
+      .items
         template(v-for="(item, index) of Object.values(items)")
-          div.item
+          .item
             img(:src="'/images/item-icons/' + item.name + '.png'" @click="buyItem(item.name)")
-            div.hint
+            .hint
               p.full-name {{ item.fullName }}
               p.description {{ item.description }}
               p.cost Cost: {{ item.cost }}
