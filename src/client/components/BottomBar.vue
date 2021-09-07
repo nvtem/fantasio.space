@@ -384,7 +384,7 @@
     bottom 45px
     width 300px
     transform translateX(-80px)
-    background-color rgba(0, 0, 0, 0.8)
+    background-color rgba(0, 0, 0, 0.9)
     border 1px solid #555
     padding 15px
 
