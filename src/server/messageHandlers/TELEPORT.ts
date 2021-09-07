@@ -18,15 +18,40 @@ export default function(room: BattleRoom, client: ColyseusClient, msg: NetMessag
 
     sleep(2000).then(() => {
       if (Date.now() - player.lastActivityAt >= 2000) {
-        const { x, y } = _.get(geometry.spawn, player.team)
+        let x: number
+        let y: number
+
+        const toTower = msg.toTower
+
+        if (toTower > -1) {
+          const tower = room.state.towers[toTower]
+
+          if (tower.hp > 0 && tower.team === player.team) {
+            x = tower.x + 70
+            y = tower.y + 70
+          } else {
+            return
+          }
+        } else {
+          x = geometry.spawn[player.team].x
+          y = geometry.spawn[player.team].y
+        }
 
         room.broadcast('PLAY_CUSTOM_ANIM', {
-          x: player.x,
-          y: player.y,
+          x,
+          y,
           name: 'teleport-post-effect'
         })
 
-        player.setPosition(x, y)
+        sleep(400).then(() => {
+          room.broadcast('PLAY_CUSTOM_ANIM', {
+            x: player.x,
+            y: player.y,
+            name: 'teleport-post-effect'
+          })
+
+          player.setPosition(x, y)
+        })
       }
     })
   }

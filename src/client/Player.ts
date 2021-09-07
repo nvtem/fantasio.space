@@ -225,6 +225,20 @@ export default class Player extends Creature {
   }
 
   teleport() {
-    this.room.send('TELEPORT')
+    const { worldX: x, worldY: y}  = this.scene.input.mousePointer
+
+    let toTower = -1
+    const towers = this.scene.towers.filter(t => t.team === this.team)
+
+    for (let i = 0; i < towers.length; i++) {
+      if (Phaser.Geom.Rectangle.Contains(towers[i].rect, x, y)) {
+        toTower = i
+        break
+      }
+    }
+
+    this.room.send('TELEPORT', {
+      toTower
+    })
   }
 }
