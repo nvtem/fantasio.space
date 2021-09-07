@@ -89,7 +89,10 @@
         height 40px
         margin-right 5px
         margin-bottom 5px
-        //position relative
+        cursor pointer
+
+        &:hover
+          border-color white
 
         .full-name
           color #ffa0a0

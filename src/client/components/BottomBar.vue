@@ -302,6 +302,10 @@
       height 40px
       margin-right 5px
       position relative
+      cursor pointer
+
+      &:hover
+        border-color white
 
       .current-level
         font-size: 14px;
@@ -353,6 +357,10 @@
       height 40px
       margin-right 5px
       position: relative
+      cursor pointer
+
+      &:hover
+        border-color white
 
       .full-name
         color #ffa0a0
