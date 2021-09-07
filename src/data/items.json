@@ -167,21 +167,5 @@
     },
     "effect": {
     }
-  },
-
-  "teleportation-scroll": {
-    "name": "teleportation-scroll",
-    "fullName": "Teleportation Scroll",
-    "description": "Teleports hero to the base in 2 seconds",
-    "cost": 50,
-    "usable": true,
-    "effect": {
-    },
-    "animation": {
-      "frameWidth": 180,
-      "frameHeight": 196,
-      "frameRate": 0.333,
-      "numberOfFrames": 1
-    }
   }
 }

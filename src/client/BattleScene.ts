@@ -304,6 +304,11 @@ export default class BattleScene extends Phaser.Scene {
       })
     }
 
+    this.input.keyboard.addKey('B', false).on('down', () => {
+      if (!this.myPlayer.animGO.anims.isPlaying && !window.chatIsActive)
+        this.myPlayer.teleport()
+    })
+
     this.input.keyboard.addKey('SPACE', false).on('down', () => {
       if (!window.chatIsActive) {
         this.camera.startFollow(this.myPlayer.bodyGO, false, 0.2, 0.2)
@@ -404,6 +409,16 @@ export default class BattleScene extends Phaser.Scene {
       }
     }
 
+    this.load.spritesheet('teleport', '/images/anims/teleport.png', {
+      frameWidth: 180,
+      frameHeight: 196
+    })
+
+    this.load.spritesheet('teleport-post-effect', '/images/anims/teleport-post-effect.png', {
+      frameWidth: 100,
+      frameHeight: 113
+    })
+
     this.load.spritesheet('movement-order', '/images/spritesheets/movement-order.png', {
       frameWidth: 50,
       frameHeight: 50
@@ -502,6 +517,21 @@ export default class BattleScene extends Phaser.Scene {
       key: 'death',
       frames: this.anims.generateFrameNumbers('death', { start: 2, end: 15 }),
       frameRate: 15,
+      repeat: 0
+    })
+
+    // загрузка анимации телепорта
+    this.anims.create({
+      key: 'teleport',
+      frames: this.anims.generateFrameNumbers('teleport', { start: 0, end: 0 }),
+      frameRate: 0.4,
+      repeat: 0
+    })
+
+    this.anims.create({
+      key: 'teleport-post-effect',
+      frames: this.anims.generateFrameNumbers('teleport-post-effect', { start: 0, end: 7 }),
+      frameRate: 20,
       repeat: 0
     })
 
@@ -717,7 +747,7 @@ export default class BattleScene extends Phaser.Scene {
 
   getMyPlayerForUI = ((includeFunctions = true) => {
     let result = _.pick(this.focusedPlayer, [
-      'stats', 'effects', 'needExpToNextLevel', 'skillLevels', 'freeSkillPoints', 'level',
+      'teleportCooldown', 'stats', 'effects', 'needExpToNextLevel', 'skillLevels', 'freeSkillPoints', 'level',
       'exp', 'characteristics', 'hp', 'mana', 'maxHP', 'maxMana', 'attackSpeed', 'attackDamage', 'movementSpeed',
       'hpRegen', 'manaRegen', 'money', 'defense', 'canBuyItems', 'team', 'gameClass',
       'name', 'my'
@@ -732,7 +762,7 @@ export default class BattleScene extends Phaser.Scene {
       }
 
       if (includeFunctions)
-        ['changeTeamAndClass', 'sendMessage', 'buyItem', 'sellItem', 'increaseSkillLevel', 'useItem']
+        ['teleport', 'changeTeamAndClass', 'sendMessage', 'buyItem', 'sellItem', 'increaseSkillLevel', 'useItem']
           .forEach((propName: string) =>
             result[propName] = this.myPlayer[propName].bind(this.myPlayer))
     }

@@ -32,16 +32,6 @@ export default function(room: BattleRoom, client: ColyseusClient, msg: NetMessag
           player.removeEffect(itemName)
         })
         break
-
-      case 'teleportation-scroll':
-        sleep(2000).then(() => {
-          if (Date.now() - player.lastActivityAt >= 2000) {
-            const {x, y} = _.get(geometry.spawn, player.team)
-            player.setPosition(x, y)
-            client.send('FOCUS_ON_HERO')
-          }
-        })
-        break
     }
 
     player.client.send('PLAY_ANIM', {

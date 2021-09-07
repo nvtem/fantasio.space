@@ -106,7 +106,7 @@ export default class Player extends Creature {
 
   setProps(props: { [key: string]: any }) {
     _.assign(this, _.pick(props, [
-      'stats', 'effects', 'needExpToNextLevel', 'skillLevels', 'freeSkillPoints', 'level', 'exp', 'characteristics', 'name', 'points', 'controlEnabled', 'destroyedTowers', 'kills', 'deaths', 'mana', 'maxHP', 'maxMana', 'canBuyItems', 'money', 'name', 'movementSpeed', 'attackDamage', 'hpRegen', 'manaRegen', 'defense', 'target'
+      'teleportCooldown', 'stats', 'effects', 'needExpToNextLevel', 'skillLevels', 'freeSkillPoints', 'level', 'exp', 'characteristics', 'name', 'points', 'controlEnabled', 'destroyedTowers', 'kills', 'deaths', 'mana', 'maxHP', 'maxMana', 'canBuyItems', 'money', 'name', 'movementSpeed', 'attackDamage', 'hpRegen', 'manaRegen', 'defense', 'target'
     ]))
 
     const text = `${props.name}[${this.level}]`
@@ -222,5 +222,9 @@ export default class Player extends Creature {
 
   increaseSkillLevel(index: number) {
     this.room.send('INCREASE_SKILL_LEVEL', { index })
+  }
+
+  teleport() {
+    this.room.send('TELEPORT')
   }
 }

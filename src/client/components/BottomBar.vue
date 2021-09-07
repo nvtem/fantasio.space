@@ -4,6 +4,12 @@
       img(:src="'/images/icons/money.png'")
       span {{ myPlayer.money }}
 
+    .teleport(@click="myPlayer.teleport")
+      img(src="/images/teleport.png")
+      .cooldown(v-show="myPlayer.teleportCooldown > 0")
+        div {{ Math.floor(myPlayer.teleportCooldown / 1000) }}
+      .hint [B] Teleports hero to the base or tower
+
     .stats.wide
       .cell.mt-0.cell--level
         span Level {{ myPlayer.level }}
@@ -442,4 +448,48 @@
     border-radius: 5px;
     font-weight: bolder;
     font-size: 16px;
+
+  .teleport
+    position fixed
+    bottom 74px
+    left calc(50% + 280px)
+    cursor pointer
+    border 1px solid transparent
+    border-radius 50%
+
+
+    &:hover
+      border-color white
+
+    img
+      border-radius 50%
+      width 35px
+      height 35px
+
+    .cooldown
+      border-radius 50%
+      background-color rgba(0, 0, 0, 0.7)
+      color white
+      position absolute
+      top 0
+      left 0
+      width 35px
+      height 35px
+      display flex
+      align-items center
+      justify-items center
+
+      div
+        width 35px
+        text-align center
+
+    .hint
+      width 200px
+      transform translateX(-200px)
+
+    &:hover .hint
+      display inline-block
+
+    &:hover .hint:hover
+      display none
 </style>

@@ -297,6 +297,12 @@ export default class BattleRoom extends ColyseusRoom {
             skill.currentCooldown = 0
         }
       }
+
+      if (player.teleportCooldown > 0) {
+        player.teleportCooldown -= timeDelta
+        if (player.teleportCooldown < 0)
+          player.teleportCooldown = 0
+      }
     }
 
     //console.log('update: ', Date.now() - time1, ' ms')

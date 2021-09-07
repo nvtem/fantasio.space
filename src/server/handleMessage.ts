@@ -13,6 +13,7 @@ const messageTypes = [
   'SELL_ITEM',
   'SEND_MESSAGE',
   'SET_TARGET',
+  'TELEPORT',
   'USE_ITEM',
   'USE_SKILL'
 ]
