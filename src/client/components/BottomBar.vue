@@ -449,10 +449,10 @@
 
 
   .money
-    bottom: 78px;
-    color: #ffd700;
+    bottom: 85px;
+    color: white;
     position: fixed;
-    left: calc(50% - 135px);
+    left: calc(50% + 220px);
     border-radius: 5px;
     font-weight: bolder;
     font-size: 16px;
