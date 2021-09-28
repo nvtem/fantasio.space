@@ -11,3 +11,4 @@ Browser Multiplayer Online Battle Arena. Made with TypeScript, Phaser, Vue.js, C
 ## Screenshots
 ![Screenshot](doc/images/screenshot-1.jpg)
 ![Screenshot](doc/images/screenshot-2.jpg)
+![Screenshot](doc/images/screenshot-3.jpg)
