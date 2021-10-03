@@ -2,7 +2,7 @@
 Browser Multiplayer Online Battle Arena. Made with TypeScript, Phaser, Vue.js, Colyseus and MongoDB.
 
 ## Development
-1. Install Node.js (version 14 or above) and MongoDB
+1. Install Node.js (works fine with ver. 14) and MongoDB
 2. Create ```fantasio-space``` database
 3. Run ```npm i -D```
 4. Run ```npm run dev_server``` and ```npm run dev_client```
